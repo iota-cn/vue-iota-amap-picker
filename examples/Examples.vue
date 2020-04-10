@@ -6,12 +6,44 @@
             </code>
         </div>
         <div class='section'>
-            <h3>Example</h3>
+            <h3>Example 1</h3>
             <code>
             </code>
-            <h4>Example</h4>
-            <div class='example'>
-
+            <h4>Auto Center Example</h4>
+            <div :style="{height:'400px'}">
+                <raw-picker />
+            </div>
+        </div>
+        <div class='section'>
+            <h3>Example 2</h3>
+            <code>
+            </code>
+            <h4>Provide Center</h4>
+            <div :style="{height:'400px'}">
+                <raw-picker :center="[112,35]" />
+            </div>
+        </div>
+        <div class='section'>
+            <h3>Example 3</h3>
+            <code>
+            </code>
+            <h4>Default Picker</h4>
+            <div :style="{height:'24px'}"
+                class="example">
+                <picker :center="[112,35]" />
+            </div>
+        </div>
+        <div class='section'>
+            <h3>Example 3</h3>
+            <code>
+            </code>
+            <h4>Default Picker</h4>
+            <div :style="{height:'24px'}"
+                class="example">
+                <picker :center="[112,35]">
+                    <a slot="controller"
+                        class="controller">Controller Slot</a>
+                </picker>
             </div>
         </div>
     </div>
@@ -19,6 +51,8 @@
 
 <script>
 import VueLogo from './assets/vue-js.png'
+import AMapRawPicker from '../src/components/picker/AMapRawPicker'
+import AMapPicker from '../src/components/picker/AMapPicker'
 
 export default {
     name: 'examples',
@@ -29,6 +63,8 @@ export default {
     },
 
     components: {
+        "raw-picker": AMapRawPicker,
+        "picker": AMapPicker
     }
 }
 </script>
