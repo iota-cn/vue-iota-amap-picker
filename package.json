@@ -1,0 +1,63 @@
+{
+    "name": "@iota-cn/amap-picker",
+    "version": "0.1.0",
+    "main": "./dist/picker.common.js",
+    "license": "MIT",
+    "keywords": [
+        "@iota",
+        "vue",
+        "components",
+        "amap",
+        "location picker"
+    ],
+    "scripts": {
+        "examples": "vue-cli-service serve ./examples/main.js",
+        "lib": "vue-cli-service build --target lib --name picker ./src/index.js",
+        "prepublish": "npm run lib",
+        "lint": "vue-cli-service lint"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:iota-cn/vue-iota-amap-picker.git"
+    },
+    "dependencies": {},
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "^4.3.1",
+        "@vue/cli-plugin-eslint": "^4.3.1",
+        "@vue/cli-service": "^4.3.1",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^6.8.0",
+        "eslint-plugin-vue": "^6.2.2",
+        "stylus": "^0.54.7",
+        "stylus-loader": "^3.0.2",
+        "vue": "^2.6.11",
+        "vue-amap": "^0.5.10",
+        "vue-template-compiler": "^2.6.11",
+        "webpack-bundle-analyzer": "^3.6.1"
+    },
+    "eslintConfig": {
+        "root": true,
+        "env": {
+            "node": true
+        },
+        "extends": [
+            "plugin:vue/essential",
+            "eslint:recommended"
+        ],
+        "rules": {
+            "no-console": "off"
+        },
+        "parserOptions": {
+            "parser": "babel-eslint"
+        }
+    },
+    "postcss": {
+        "plugins": {
+            "autoprefixer": {}
+        }
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions"
+    ]
+}
