@@ -7,7 +7,8 @@ const defaultPicker = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
 export default {
     name: 'IotaAMapPicker',
     props: {
-        center: Array
+        center: Array,
+        disabled: Boolean
     },
 
     data() {
@@ -53,7 +54,7 @@ export default {
                 </div>
                 {this.visible ? <Modal onCancel={this.onCancel} onOk={this.onOk} okText={this.okText} cancelText={this.cancelText}>
                     <div class='iota-avatar-modal-title' slot='header'>{this.title ? this.title : 'Picker Position'}</div>
-                    <AMapRawPicker slot="body" center={this.mapCenter} onPosition={this.onPosition} />
+                    <AMapRawPicker slot="body" center={this.mapCenter} onPosition={this.onPosition} disabled={this.disabled} />
                 </Modal> : null
                 }
             </div>
