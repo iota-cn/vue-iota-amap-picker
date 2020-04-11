@@ -15,7 +15,8 @@ import VueAMap from 'vue-amap'
 let amapManager = new VueAMap.AMapManager()
 export default {
     props: {
-        center: Array
+        center: Array,
+        disabled: Boolean
     },
     data: function () {
         let mapCenter = this.center
@@ -30,14 +31,14 @@ export default {
                         amapManager.getMap().setCenter(this.mapCenter)
                     }
                 },
-                click: (o) => {
+                click: that.disabled ? () => { } : (o) => {
                     that.mapCenter = [o.lnglat.lng, o.lnglat.lat]
                     this.$emit('position', this.mapCenter)
                 }
             },
             plugin: [{
                 pName: 'ToolBar',
-                autoPosition: this.center === undefined,
+                autoPosition: this.center === undefined && !that.disabled,
                 events: {
                     location: (o) => {
                         that.mapCenter = [o.lnglat.lng, o.lnglat.lat]

@@ -1,6 +1,6 @@
 {
     "name": "@iota-cn/amap-picker",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "main": "./dist/picker.common.js",
     "license": "MIT",
     "keywords": [
