@@ -29,3 +29,7 @@ npm run examples
   - Local:   http://localhost:8080/
   ...
 ```
+
+### Popover 
+
+Popover is from: https://github.com/euvl/vue-js-popover

@@ -1,7 +1,10 @@
 import Vue from 'vue'
-import Examples from './Examples.vue'
-import VueAMap from 'vue-amap';
+import Picker from '../src'
+Vue.use(Picker)
 
+import Examples from './Examples.vue'
+
+import VueAMap from 'vue-amap';
 Vue.use(VueAMap);
 VueAMap.initAMapApiLoader({
     key: '47c2356c5124a179696ec3f0907da462',

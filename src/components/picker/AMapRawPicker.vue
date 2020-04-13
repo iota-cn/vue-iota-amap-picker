@@ -14,6 +14,7 @@
 import VueAMap from 'vue-amap'
 let amapManager = new VueAMap.AMapManager()
 export default {
+    name: 'IotaAMapRawPicker',
     model: {
         prop: 'position',
         event: 'change'
