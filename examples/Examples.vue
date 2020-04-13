@@ -11,7 +11,7 @@
             </code>
             <h4>Auto Position Example</h4>
             <div :style="{height:'400px'}">
-                <raw-picker />
+                <iota-amap-raw-picker />
             </div>
         </div>
         <div class='section'>
@@ -20,11 +20,11 @@
             </code>
             <h4>Provide Position</h4>
             <div :style="{height:'400px'}">
-                <raw-picker :position="[112,35]" />
+                <iota-amap-raw-picker :position="[112,35]" />
             </div>
             <h4>Provide Position (v-model)</h4>
             <div :style="{height:'400px'}">
-                <raw-picker v-model="position" />
+                <iota-amap-raw-picker v-model="position" />
             </div>
         </div>
         <div class='section'>
@@ -33,7 +33,7 @@
             </code>
             <h4>Provide Position And disabled</h4>
             <div :style="{height:'400px'}">
-                <raw-picker :position="[112,35]"
+                <iota-amap-raw-picker :position="[112,35]"
                     disabled />
             </div>
         </div>
@@ -51,11 +51,6 @@
                 class="example">
                 <picker v-model="position" />
             </div>
-        </div>
-        <div class='section'>
-            <h3>Example 5</h3>
-            <code>
-            </code>
             <h4>Custome Picker</h4>
             <div :style="{height:'24px'}"
                 class="example">
@@ -64,11 +59,6 @@
                         class="controller">Controller Slot</a>
                 </picker>
             </div>
-        </div>
-        <div class='section'>
-            <h3>Example 5</h3>
-            <code>
-            </code>
             <h4>Custome Disabled Picker</h4>
             <div :style="{height:'24px'}"
                 class="example">
@@ -79,6 +69,25 @@
                 </picker>
             </div>
         </div>
+        <div class='section'>
+            <h3>Example 4</h3>
+            <code>
+            </code>
+            <h4>Viewer</h4>
+            <div :style="{height:'24px'}"
+                class="example">
+                <viewer :position="[112,35]">
+                </viewer>
+            </div>
+            <h4>Viewer (Custome Controller)</h4>
+            <div :style="{height:'24px'}"
+                class="example">
+                <viewer :position="[112,35]">
+                    <a slot="controller"
+                        class="controller">Controller Slot</a>
+                </viewer>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -86,6 +95,7 @@
 import VueLogo from './assets/vue-js.png'
 import AMapRawPicker from '../src/components/picker/AMapRawPicker'
 import AMapPicker from '../src/components/picker/AMapPicker'
+import AMapViewer from '../src/components/picker/AMapViewer'
 
 export default {
     name: 'examples',
@@ -97,8 +107,9 @@ export default {
     },
 
     components: {
-        "raw-picker": AMapRawPicker,
-        "picker": AMapPicker
+        "iota-amap-raw-picker": AMapRawPicker,
+        "picker": AMapPicker,
+        "viewer": AMapViewer
     }
 }
 </script>
