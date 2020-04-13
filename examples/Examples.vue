@@ -9,7 +9,7 @@
             <h3>Example 1</h3>
             <code>
             </code>
-            <h4>Auto Center Example</h4>
+            <h4>Auto Position Example</h4>
             <div :style="{height:'400px'}">
                 <raw-picker />
             </div>
@@ -18,18 +18,22 @@
             <h3>Example 2</h3>
             <code>
             </code>
-            <h4>Provide Center</h4>
+            <h4>Provide Position</h4>
             <div :style="{height:'400px'}">
-                <raw-picker :center="[112,35]" />
+                <raw-picker :position="[112,35]" />
+            </div>
+            <h4>Provide Position (v-model)</h4>
+            <div :style="{height:'400px'}">
+                <raw-picker v-model="position" />
             </div>
         </div>
         <div class='section'>
             <h3>Example 3</h3>
             <code>
             </code>
-            <h4>Provide Center And disabled</h4>
+            <h4>Provide Position And disabled</h4>
             <div :style="{height:'400px'}">
-                <raw-picker :center="[112,35]"
+                <raw-picker :position="[112,35]"
                     disabled />
             </div>
         </div>
@@ -40,7 +44,12 @@
             <h4>Default Picker</h4>
             <div :style="{height:'24px'}"
                 class="example">
-                <picker :center="[112,35]" />
+                <picker :position="[112,35]" />
+            </div>
+            <h4>Default Picker (v-model)</h4>
+            <div :style="{height:'24px'}"
+                class="example">
+                <picker v-model="position" />
             </div>
         </div>
         <div class='section'>
@@ -50,7 +59,7 @@
             <h4>Custome Picker</h4>
             <div :style="{height:'24px'}"
                 class="example">
-                <picker :center="[112,35]">
+                <picker :position="[112,35]">
                     <a slot="controller"
                         class="controller">Controller Slot</a>
                 </picker>
@@ -63,7 +72,7 @@
             <h4>Custome Disabled Picker</h4>
             <div :style="{height:'24px'}"
                 class="example">
-                <picker :center="[112,35]"
+                <picker :position="[112,35]"
                     disabled>
                     <a slot="controller"
                         class="controller">Controller Slot</a>
@@ -82,7 +91,8 @@ export default {
     name: 'examples',
     data() {
         return {
-            vueImg: VueLogo
+            vueImg: VueLogo,
+            position: undefined
         }
     },
 

@@ -5,8 +5,8 @@
         :plugin="plugin"
         :events="events"
         class="picker">
-        <el-amap-marker :position="mapCenter"
-            v-if="mapCenter"></el-amap-marker>
+        <el-amap-marker :position="mapPosition"
+            v-if="mapPosition"></el-amap-marker>
     </el-amap>
 </template>
 
@@ -14,35 +14,39 @@
 import VueAMap from 'vue-amap'
 let amapManager = new VueAMap.AMapManager()
 export default {
+    model: {
+        prop: 'position',
+        event: 'change'
+    },
     props: {
-        center: Array,
+        position: Array,
         disabled: Boolean
     },
     data: function () {
-        let mapCenter = this.center
+        let mapPosition = this.position
         let that = this
         return {
             amapManager,
-            mapCenter,
+            mapPosition,
             zoom: 12,
             events: {
                 init: () => {
-                    if (that.mapCenter !== undefined) {
-                        amapManager.getMap().setCenter(this.mapCenter)
+                    if (that.mapPosition !== undefined) {
+                        amapManager.getMap().setCenter(this.mapPosition)
                     }
                 },
                 click: that.disabled ? () => { } : (o) => {
-                    that.mapCenter = [o.lnglat.lng, o.lnglat.lat]
-                    this.$emit('position', this.mapCenter)
+                    that.mapPosition = [o.lnglat.lng, o.lnglat.lat]
+                    this.$emit('change', this.mapPosition)
                 }
             },
             plugin: [{
                 pName: 'ToolBar',
-                autoPosition: this.center === undefined && !that.disabled,
+                autoPosition: this.position === undefined && !that.disabled,
                 events: {
                     location: (o) => {
-                        that.mapCenter = [o.lnglat.lng, o.lnglat.lat]
-                        this.$emit('position', this.mapCenter)
+                        that.mapPosition = [o.lnglat.lng, o.lnglat.lat]
+                        this.$emit('change', this.mapPosition)
                     }
                 }
             }]

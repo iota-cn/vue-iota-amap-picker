@@ -6,18 +6,20 @@ const defaultPicker = "data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmN
 
 export default {
     name: 'IotaAMapPicker',
+    model: {
+        prop: 'position',
+        event: 'change'
+    },
     props: {
-        center: Array,
+        position: Array,
         disabled: Boolean
     },
-
     data() {
         return {
             visible: false,
-            mapCenter: this.center
+            mapPosition: this.position
         }
     },
-
     methods: {
         setVisible(visible) {
             this.visible = visible
@@ -30,7 +32,7 @@ export default {
 
         onOk() {
             this.setVisible(false)
-            this.$emit('postion', this.mapCenter)
+            this.$emit('change', this.mapPosition)
         },
 
         onCancel() {
@@ -38,10 +40,9 @@ export default {
         },
 
         onPosition(position) {
-            this.mapCenter = position
+            this.mapPosition = position
         }
     },
-
     render(h) {
         return (
             <div class='iota-amap-picker'>
@@ -54,7 +55,7 @@ export default {
                 </div>
                 {this.visible ? <Modal onCancel={this.onCancel} onOk={this.onOk} okText={this.okText} cancelText={this.cancelText}>
                     <div class='iota-avatar-modal-title' slot='header'>{this.title ? this.title : 'Picker Position'}</div>
-                    <AMapRawPicker slot="body" center={this.mapCenter} onPosition={this.onPosition} disabled={this.disabled} />
+                    <AMapRawPicker slot="body" position={this.mapPosition} onChange={this.onPosition} disabled={this.disabled} />
                 </Modal> : null
                 }
             </div>
