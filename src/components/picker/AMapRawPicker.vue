@@ -6,7 +6,7 @@
         :events="events"
         class="picker">
         <el-amap-marker :position="mapPosition"
-            v-if="mapPosition"></el-amap-marker>
+            v-if="validPostion"></el-amap-marker>
     </el-amap>
 </template>
 
@@ -32,28 +32,33 @@ export default {
             zoom: 12,
             events: {
                 init: () => {
-                    if (that.mapPosition !== undefined) {
-                        amapManager.getMap().setCenter(this.mapPosition)
+                    if (that.mapPosition !== undefined && Array.isArray(that.mapPosition)
+                        && that.mapPosition.length === 2) {
+                        amapManager.getMap().setCenter(that.mapPosition)
                     }
                 },
                 click: that.disabled ? () => { } : (o) => {
                     that.mapPosition = [o.lnglat.lng, o.lnglat.lat]
-                    this.$emit('change', this.mapPosition)
+                    that.$emit('change', that.mapPosition)
                 }
             },
             plugin: [{
                 pName: 'ToolBar',
-                autoPosition: this.position === undefined && !that.disabled,
+                autoPosition: that.position === undefined && !that.disabled,
                 events: {
                     location: (o) => {
                         that.mapPosition = [o.lnglat.lng, o.lnglat.lat]
-                        this.$emit('change', this.mapPosition)
+                        that.$emit('change', that.mapPosition)
                     }
                 }
             }]
         }
     },
     computed: {
+        validPostion() {
+            return this.mapPosition !== undefined && Array.isArray(this.mapPosition)
+                && this.mapPosition.length === 2
+        }
     },
     methods: {
     }
