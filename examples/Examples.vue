@@ -49,7 +49,10 @@
             <h4>Default Picker (v-model)</h4>
             <div :style="{height:'24px'}"
                 class="example">
-                <picker v-model="position" />
+                <picker v-model="position"
+                    title="Hello Picker"
+                    okText="好"
+                    cancelText="不" />
             </div>
             <h4>Custome Picker</h4>
             <div :style="{height:'24px'}"

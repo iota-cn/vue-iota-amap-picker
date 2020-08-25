@@ -11,7 +11,10 @@ export default {
     },
     props: {
         position: Array,
-        disabled: Boolean
+        disabled: Boolean,
+        okText: String,
+        cancelText: String,
+        title: String
     },
     data() {
         return {
